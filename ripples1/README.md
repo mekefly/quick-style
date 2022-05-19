@@ -1,3 +1,5 @@
 # 涟漪效果
 
-## [预览地址](https://mekefly.github.io/quick-style/ripples1/src/index.html)
+## [预览](src/index.html)
+
+请在 gitpage 中浏览[本页](https://mekefly.github.io/quick-style/ripples1)
