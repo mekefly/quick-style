@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="button">
+      <input type="button" value="Button" id="button" />
+      <span class="ripple-animation"><span class="circular"></span></span>
+    </div>
+    <script src="https://unpkg.com/@wormery/wtsc@2.0.0-bate.38/dist/wtsc.iife.js"></script>
+    <script>
+      console.log(wtsc);
+      const { defWTSC, s, px, PE } = wtsc;
+      const w = defWTSC({});
+      function assignment(obj, valueObj) {
+        Object.keys(valueObj).forEach((key) => (obj[key] = valueObj[key]));
+      }
+
+      function wait(ms) {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            console.log("Done waiting");
+            resolve(ms);
+          }, ms);
+        });
+      }
+
+      let button = document.querySelector(".button");
+      button.addEventListener("mouseenter", async (e) => {
+        const span = button.querySelector("span");
+
+        span.style.cssText = w.add
+          .opacity(1)
+          .add.left(px(e.offsetX))
+          .add.top(px(e.offsetY))
+          .out();
+        await wait(0);
+        span.style.cssText = w.add
+          .left(px(e.offsetX))
+          .add.top(px(e.offsetY))
+          .add.transition("all", s(0.5), "ease")
+          .add.transform(`scale(4)`)
+          .add.opacity("0")
+          .out();
+      });
+
+      button.addEventListener("mouseleave", async (e) => {
+        const span = button.querySelector("span");
+        span.style.cssText = w.add
+          .opacity(1)
+          .add.left(px(e.offsetX))
+          .add.top(px(e.offsetY))
+          .add.transform(`scale(0)`)
+          .add.transition("all", s(0.5), "ease")
+          .out();
+      });
+    </script>
+
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        height: 100vh;
+        width: 100vw;
+        background-color: #57606f;
+      }
+      .button {
+        position: relative;
+        height: 122px;
+        width: 200px;
+        border-radius: 12px;
+        overflow: hidden;
+      }
+      .button input {
+        height: 100%;
+        width: 100%;
+        background: linear-gradient(135deg, #f54ea2, #ff7676);
+        outline: none;
+        border: none;
+        font-size: 2rem;
+        color: #f1f2f6;
+
+        box-shadow: 2px 4px 6px #2f3542;
+      }
+      .button > span {
+        position: absolute;
+        transform: scale(1);
+
+        left: 0px;
+        top: 0px;
+
+        height: 0px;
+        width: 0px;
+
+        opacity: 0;
+
+        overflow: visible;
+      }
+      .button > span > span {
+        position: absolute;
+
+        display: block;
+
+        width: 100px;
+        height: 100px;
+        border-radius: 100%;
+
+        background-color: #ffffffff;
+
+        transform: translate(-50%, -50%);
+      }
+    </style>
+  </body>
+</html>
