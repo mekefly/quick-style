@@ -11,6 +11,14 @@
       <input type="button" value="Button" id="button" />
       <span class="ripple-animation"><span class="circular"></span></span>
     </div>
+    <div class="button">
+      <input type="button" value="Button" id="button" />
+      <span class="ripple-animation"><span class="circular"></span></span>
+    </div>
+    <div class="button">
+      <input type="button" value="Button" id="button" />
+      <span class="ripple-animation"><span class="circular"></span></span>
+    </div>
     <script src="https://unpkg.com/@wormery/wtsc@2.0.0-bate.38/dist/wtsc.iife.js"></script>
     <script>
       console.log(wtsc);
@@ -29,34 +37,37 @@
         });
       }
 
-      let button = document.querySelector(".button");
-      button.addEventListener("mouseenter", async (e) => {
-        const span = button.querySelector("span");
+      let buttons = document.querySelectorAll(".button");
 
-        span.style.cssText = w.add
-          .opacity(1)
-          .add.left(px(e.offsetX))
-          .add.top(px(e.offsetY))
-          .out();
-        await wait(0);
-        span.style.cssText = w.add
-          .left(px(e.offsetX))
-          .add.top(px(e.offsetY))
-          .add.transition("all", s(0.5), "ease")
-          .add.transform(`scale(4)`)
-          .add.opacity("0")
-          .out();
-      });
+      buttons.forEach((button) => {
+        button.addEventListener("mouseenter", async (e) => {
+          const span = button.querySelector("span");
 
-      button.addEventListener("mouseleave", async (e) => {
-        const span = button.querySelector("span");
-        span.style.cssText = w.add
-          .opacity(1)
-          .add.left(px(e.offsetX))
-          .add.top(px(e.offsetY))
-          .add.transform(`scale(0)`)
-          .add.transition("all", s(0.5), "ease")
-          .out();
+          span.style.cssText = w.add
+            .opacity(1)
+            .add.left(px(e.offsetX))
+            .add.top(px(e.offsetY))
+            .out();
+          await wait(0);
+          span.style.cssText = w.add
+            .left(px(e.offsetX))
+            .add.top(px(e.offsetY))
+            .add.transition("all", s(0.3), "ease-in")
+            .add.transform(`scale(4)`)
+            .add.opacity("0")
+            .out();
+        });
+
+        button.addEventListener("mouseleave", async (e) => {
+          const span = button.querySelector("span");
+          span.style.cssText = w.add
+            .opacity(1)
+            .add.left(px(e.offsetX))
+            .add.top(px(e.offsetY))
+            .add.transform(`scale(0)`)
+            .add.transition("all", s(0.3), "ease-out")
+            .out();
+        });
       });
     </script>
 
@@ -76,22 +87,37 @@
       }
       .button {
         position: relative;
+
         height: 122px;
         width: 200px;
-        border-radius: 12px;
+
+        margin: 20px;
+
         overflow: hidden;
+
+        border-radius: 12px;
+
+        box-shadow: 2px 4px 6px #2f3542;
       }
       .button input {
         height: 100%;
         width: 100%;
-        background: linear-gradient(135deg, #f54ea2, #ff7676);
         outline: none;
         border: none;
         font-size: 2rem;
         color: #f1f2f6;
-
-        box-shadow: 2px 4px 6px #2f3542;
       }
+
+      .button:nth-child(1) input {
+        background: linear-gradient(135deg, #f54ea2, #ff7676);
+      }
+      .button:nth-child(2) input {
+        background: linear-gradient(135deg, #fce38a, #f38181);
+      }
+      .button:nth-child(3) input {
+        background: linear-gradient(135deg, #42e695, #3bb2b8);
+      }
+
       .button > span {
         position: absolute;
         transform: scale(1);
