@@ -56,15 +56,16 @@ body {
 }
 
 .play:not(.pause) > div:nth-child(1) {
+  left: 60%;
+}
+
+.play:not(.pause) > div:nth-child(2) {
   left: 80%;
   top: 50%;
 
   height: 0%;
   width: 0%;
-}
-
-.play:not(.pause) > div:nth-child(2) {
-  left: 60%;
+  transform: rotate(120deg);
 }
 
 .play:not(.pause) > div:nth-child(3) {
