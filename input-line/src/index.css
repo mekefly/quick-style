@@ -1,0 +1,77 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: linear-gradient(135deg, #17ead9, #6078ea);
+
+  height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+form {
+  background-color: #ffffffaa;
+  border-radius: 7px;
+  padding: 40px;
+}
+
+form > .label {
+  text-align: center;
+  font-size: 1.5rem;
+  transform: translateY(-40%);
+}
+
+.input {
+  position: relative;
+
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: left;
+}
+
+.input input {
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+
+.input .line {
+  position: absolute;
+  bottom: -2px;
+  height: 2px;
+  width: 100%;
+  background-color: #ffffff;
+}
+
+.input .line .focused {
+  height: 100%;
+  width: 100%;
+  background-color: hsl(351, 100%, 71%);
+  transform: scaleX(0);
+  transition: all 1s ease;
+}
+
+.input input:focus + * + .line .focused {
+  transform: scaleX(1);
+}
+
+.input.inputed .line .focused {
+  transform: scaleX(1);
+}
+
+.input .label {
+  font-size: 1rem;
+  transform: translateY(100%);
+  pointer-events: none;
+  transition: all 1s ease;
+}
+
+.input input:focus + .label {
+  transform: translateY(0%) scale(0.6);
+  transform-origin: 0px center;
+}
+
+.input.inputed .label {
+  transform: translateY(0%) scale(0.6);
+  transform-origin: 0px center;
+}
