@@ -1,0 +1,113 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(135deg, #17ead9, #6078ea88),
+    linear-gradient(225deg, #fce38a, #f38181);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.play {
+  --duration: 0.4s;
+  --transition: all var(--duration) ease;
+  --size: 50px;
+
+  position: relative;
+  height: var(--size);
+  width: var(--size);
+  transition: var(--transition);
+}
+
+.play.pause {
+  transform: rotate(90deg);
+  transition: var(--transition);
+}
+
+.play > div > div {
+  position: absolute;
+  top: 0%;
+
+  transition: var(--transition);
+}
+
+.play > div {
+  position: absolute;
+  top: 0%;
+
+  transition: var(--transition);
+}
+
+.play:not(.pause) > div {
+  height: 100%;
+  width: 100%;
+}
+
+.play:not(.pause) > div > div {
+  height: 100%;
+  width: 40%;
+  background-color: #ffffff;
+  border-radius: calc(var(--size) / 10);
+}
+
+.play:not(.pause) > div:nth-child(1) {
+  left: 80%;
+  top: 50%;
+
+  height: 0%;
+  width: 0%;
+}
+
+.play:not(.pause) > div:nth-child(2) {
+  left: 60%;
+}
+
+.play:not(.pause) > div:nth-child(3) {
+  left: 0%;
+}
+
+.pause > div {
+  --radius: calc(var(--size) / 2);
+  height: 100%;
+  width: 100%;
+}
+
+.pause > div > div {
+  height: 100%;
+  width: 100%;
+
+  border-radius: 0px;
+
+  background-color: white;
+
+  border-top-right-radius: var(--radius);
+
+  transform: matrix(0.25, -0.433, 0.25, 0.433, 0, 0);
+
+  transition: all var(--duration) ease,
+    border-radius var(--duration) ease var(--duration),
+    border-top-right-radius var(--duration) ease;
+}
+
+.pause > div:nth-child(1) {
+  left: 0%;
+  top: -7.217%;
+  transform: rotate(0deg);
+}
+
+.pause > div:nth-child(2) {
+  left: 12.5%;
+  top: 14.234%;
+  transform: rotate(120deg);
+}
+
+.pause > div:nth-child(3) {
+  left: -12.5%;
+  top: 14.234%;
+  transform: rotate(-120deg);
+}
