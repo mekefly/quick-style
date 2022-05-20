@@ -38,7 +38,6 @@
           isPassword: Boolean,
         },
         setup(props) {
-          console.log(props);
           let value = ref(props.value ?? "");
           return () => {
             return (
@@ -48,7 +47,6 @@
                   value={value.value}
                   onInput={(el) => {
                     value.value = el.target.value;
-                    console.log(value);
                     props["update:value"]?.(value.value);
                   }}
                 />
