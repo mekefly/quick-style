@@ -9,9 +9,10 @@
   </head>
   <body>
     <div class="play pause">
-      <div><div></div></div>
-      <div><div></div></div>
-      <div><div></div></div>
+      <!-- 为什么要在菱形上包一曾，因为使用transform后再使用旋转会出一些问题，外面包一层可以认为是一个组件把菱形隔离起来，就可以直接旋转了 -->
+      <div><div class="diamond"></div></div>
+      <div><div class="diamond"></div></div>
+      <div><div class="diamond"></div></div>
     </div>
     <script src="./index.js"></script>
   </body>

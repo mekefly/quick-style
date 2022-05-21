@@ -14,9 +14,10 @@ body {
 }
 
 .play {
-  --duration: 0.4s;
+  /* 调整这里改变一些设置 */
+  --duration: 0.6s;
   --transition: all var(--duration) ease;
-  --size: 50px;
+  --size: 200px;
 
   position: relative;
   height: var(--size);
@@ -78,7 +79,7 @@ body {
   width: 100%;
 }
 
-.pause > div > div {
+.pause .diamond {
   height: 100%;
   width: 100%;
 
