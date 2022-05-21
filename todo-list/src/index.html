@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/index.css" />
+    <link rel="stylesheet" href="./css/fa/all.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 对代码进行编译为浏览器可识别的代码，这里使用了jsx -->
+    <!-- https://www.babeljs.cn -->
+    <script src="https://unpkg.com/@babel/standalone@7.17.11/babel.min.js"></script>
+    <!-- vue框架，著名的前端框架 -->
+    <!-- https://v3.cn.vuejs.org/ -->
+    <script src="https://unpkg.com/vue@3.2.33/dist/vue.global.js"></script>
+    <!-- css in ts的一个解决方案 -->
+    <!-- https://wormery.github.io/wtsc/ -->
+    <script src="https://unpkg.com/@wormery/wtsc@2.0.0-bate.38/dist/wtsc.iife.js"></script>
+    <!-- <script src="https://unpkg.com/@wormery/wtsc@2.0.0-bate.38/dist/wtsc.iife.prod.js"></script> -->
+
+    <div id="app"></div>
+
+    <script type="text/babel">
+      const { createApp, h, ref, computed, defineComponent } = Vue;
+      // babel会将标签编译为React.createElement,所以我们打了个补丁
+      const React = { createElement: h };
+      const { defWTSC, rgb, px, PE, vh, vw, ms } = wtsc;
+      const w = defWTSC({});
+      const IconButton = {
+        props: {
+          icon: String,
+        },
+        setup(props) {
+          return () => {
+            return (
+              <div class="right-button">
+                <div class="cover"></div>
+                <i class={["fa-solid", `fa-${props.icon}`]}></i>
+              </div>
+            );
+          };
+        },
+      };
+
+      const Task = defineComponent({
+        name: "Task",
+        props: {
+          task: { type: Object, default: { key: Math.random(), value: "" } },
+          isComponented: { type: Boolean, default: false },
+          onConponented: Function,
+          onDelete: Function,
+        },
+        setup(props) {
+          // const isHover = ref(false);
+          const isTransparent = ref(true);
+          const duration = 500;
+          setTimeout(() => {
+            isTransparent.value = false;
+          });
+          return () => {
+            const task = props.task;
+            const { key, value } = task;
+            return (
+              <div
+                style={w.add
+                  .opacity(isTransparent.value ? 0 : 1)
+                  .add.transition("all", ms(duration), "ease")
+                  .out()}
+                class={[
+                  "task",
+                  {
+                    componented: props.isComponented,
+                    transparent: isTransparent.value,
+                  },
+                ]}
+              >
+                <div class="value">{value}</div>
+                <div class="button-box">
+                  {props.isComponented ? undefined : (
+                    <IconButton
+                      onClick={() => {
+                        if (isTransparent.value) {
+                          return;
+                        }
+
+                        isTransparent.value = true;
+                        setTimeout(() => {
+                          props.onConponented?.(key, task);
+                        }, duration);
+                      }}
+                      class="right-button"
+                      icon="check"
+                    />
+                  )}
+                  <IconButton
+                    onClick={() => {
+                      if (isTransparent.value) {
+                        return;
+                      }
+
+                      isTransparent.value = true;
+                      setTimeout(() => {
+                        props.onDelete?.(key, task);
+                      }, duration);
+                    }}
+                    class="delete-button"
+                    icon="trash-can"
+                  />
+                </div>
+              </div>
+            );
+          };
+        },
+      });
+
+      const WInput = defineComponent({
+        props: {
+          label: {
+            type: String,
+            default: "label",
+            value: { type: String, default: "" },
+            ["update:value"]: { type: Function },
+          },
+          isPassword: Boolean,
+          onEnter: {
+            type: Function,
+          },
+        },
+        setup(props) {
+          let value = ref(props.value ?? "");
+
+          const isTransparent = ref(false);
+          return () => {
+            const handelKeypress = (e) => {
+              const keyCode = e.keyCode;
+              if (keyCode === 13) {
+                props.onEnter?.(value.value);
+              }
+            };
+            return (
+              <div class={{ input: true, inputed: value.value !== "" }}>
+                <input
+                  onKeypress={handelKeypress}
+                  type={props.isPassword === true ? "password" : "text"}
+                  value={value.value}
+                  onInput={(el) => {
+                    value.value = el.target.value;
+                    props["update:value"]?.(value.value);
+                  }}
+                />
+                <div class={{ label: true, inputed: value.value !== "" }}>
+                  {props.label}
+                </div>
+                <div class="line">
+                  <div class="focused"></div>
+                </div>
+              </div>
+            );
+          };
+        },
+      });
+
+      const App = defineComponent(function () {
+        const noComponentedList = ref([{ value: "内容", key: Math.random() }]);
+        const componentedList = ref([{ value: "内容1", key: Math.random() }]);
+        function deleteList(list, key) {
+          let index = -1;
+          for (let i = 0; i <= list.length; i++) {
+            const item = list[i];
+            if (item.key == key) {
+              index = i;
+              break;
+            }
+          }
+          list.splice(index, 1);
+        }
+
+        return () => (
+          <div class="container">
+            <WInput
+              onEnter={(v) => {
+                console.log(v);
+                noComponentedList.value.push({ value: v, key: Math.random() });
+              }}
+              label="新建"
+            ></WInput>
+            <div class="no-componented">
+              <p class="title">Not Conponented</p>
+              {noComponentedList.value.map((item) => (
+                <Task
+                  onConponented={(key, value) => {
+                    deleteList(noComponentedList.value, key);
+
+                    componentedList.value.push(value);
+                  }}
+                  onDelete={(key, value) =>
+                    deleteList(noComponentedList.value, key)
+                  }
+                  key={item.key}
+                  task={item}
+                ></Task>
+              ))}
+            </div>
+            <div class="componented">
+              <p class="title">Conponented</p>
+              {componentedList.value.map((item) => (
+                <Task
+                  onDelete={(key, value) =>
+                    deleteList(componentedList.value, key)
+                  }
+                  key={item.key}
+                  task={item}
+                  isComponented
+                ></Task>
+              ))}
+            </div>
+          </div>
+        );
+      });
+
+      createApp(App).mount("#app");
+    </script>
+  </body>
+</html>

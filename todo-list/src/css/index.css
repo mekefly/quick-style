@@ -1,0 +1,157 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+body {
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+
+  height: 100vh;
+  background: linear-gradient(135deg, #f54ea2, #ff7676);
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+
+  font-family: Arial, Helvetica, sans-serif;
+  --duration: 500ms;
+}
+/*  w-input */
+.input {
+  position: relative;
+
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: left;
+}
+
+.input input {
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+
+.input .line {
+  position: absolute;
+  bottom: -2px;
+  height: 2px;
+  width: 100%;
+  background-color: #ffffff;
+}
+
+.input .line .focused {
+  height: 100%;
+  width: 100%;
+  background-color: #1e90ff;
+  transform: scaleX(0);
+  transition: all 1s ease;
+}
+
+.input input:focus + * + .line .focused {
+  transform: scaleX(1);
+}
+
+.input.inputed .line .focused {
+  transform: scaleX(1);
+}
+
+.input .label {
+  font-size: 1rem;
+  transform: translateY(50%);
+  pointer-events: none;
+  transition: all 1s ease;
+}
+
+.input input:focus + .label {
+  transform: translateY(0%) scale(0.6);
+  transform-origin: 0px center;
+}
+
+.input.inputed .label {
+  transform: translateY(0%) scale(0.6);
+  transform-origin: 0px center;
+}
+
+.container {
+  width: 500px;
+}
+
+.container .task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: #ecf0f1bb;
+
+  margin: 5px 0;
+
+  padding: 20px;
+
+  overflow: hidden;
+}
+
+.task .button-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.task .button-box > div {
+  margin: 0px 10px;
+  /* z-index: 0; */
+}
+.task .button-box .right-button {
+  position: relative;
+}
+
+.task .button-box .cover {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+
+  width: 100%;
+  height: 100%;
+
+  border-radius: 100%;
+
+  z-index: -1;
+
+  transform: scale(0);
+  transition: all var(--duration) ease;
+}
+.task .button-box .right-button .cover {
+  background-color: #00a8ff;
+}
+
+.task .button-box .right-button:hover .cover {
+  transform: scale(70);
+}
+
+.task .button-box .right-button i {
+  z-index: 1;
+}
+
+.task .button-box .delete-button {
+  position: relative;
+}
+
+.task .button-box .delete-button .cover {
+  background-color: red;
+}
+.task .button-box .delete-button:hover .cover {
+  transform: scale(70);
+}
+.task.transparent {
+  opacity: 1;
+}
+
+.container .task.componented {
+  background-color: #747d8cbb;
+  color: #ecf0f1;
+}
+
+.container div .title {
+  margin: 15px 0;
+  font-weight: bold;
+}
