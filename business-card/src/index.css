@@ -1,0 +1,118 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+  width: 100vw;
+
+  background: linear-gradient(135deg, #17ead9, #6078ea);
+}
+
+.container {
+  position: relative;
+
+  display: flex;
+  justify-content: space-around;
+
+  width: 100%;
+
+  color: #636e72;
+}
+
+.container .business-card {
+  height: 270px;
+  width: 260px;
+
+  padding: 25px;
+
+  border-radius: 5px;
+
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+.container .business-card .head {
+  display: flex;
+  justify-content: space-between;
+
+  width: 100%;
+
+  font-size: 1.2rem;
+}
+
+.container .business-card .avatar {
+  display: flex;
+  justify-content: center;
+}
+
+.container .business-card .avatar .img {
+  height: 120px;
+  width: 120px;
+
+  border-radius: 50%;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  transform: translateY(-5px);
+}
+
+.container .business-card:nth-child(1) .avatar .img {
+  background-image: url(./imgs/avatar_a.jpeg);
+}
+.container .business-card:nth-child(2) .avatar .img {
+  background-image: url(./imgs/avatar_b.jpeg);
+}
+.container .business-card:nth-child(3) .avatar .img {
+  background-image: url(./imgs/avatar_c.jpeg);
+}
+.container .business-card:nth-child(4) .avatar .img {
+  background-image: url(./imgs/avatar_d.jpeg);
+}
+
+.container .business-card .name {
+  display: flex;
+  justify-content: center;
+
+  margin-top: 15px;
+  margin-bottom: 5px;
+
+  color: #000000;
+}
+
+.container .business-card .job {
+  display: flex;
+  justify-content: center;
+
+  color: #ff7f50aa;
+}
+
+.container .business-card .contact {
+  display: flex;
+  justify-content: space-between;
+
+  margin: 20px;
+}
+
+.container .business-card .contact .item {
+  padding: 10px;
+
+  border-radius: 5px;
+
+  background-color: #f1f2f6;
+}
+
+.container .item {
+  transition: color 0.5s ease;
+}
+
+.container .item:hover {
+  color: #17ead9;
+}
