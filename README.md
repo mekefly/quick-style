@@ -11,6 +11,7 @@
 - [todo 组件](./todo-list)
 - [创意的列表效果](./item-block)
 - [中规中矩的名片效果](./business-card)
+- [转盘加载动画](./loading)
 
 # 代码仓库
 
