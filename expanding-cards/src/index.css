@@ -1,0 +1,67 @@
+* {
+  margin: 0;
+  padding: 0;
+
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+  width: 100vw;
+
+  background-image: linear-gradient(135deg, #ce9ffc, #7367f0);
+}
+
+.expanding-cards {
+  --width: 1000px;
+  --duration: 0.6s;
+
+  display: flex;
+  width: var(--width);
+  height: 500px;
+}
+
+.expanding-cards .img {
+  position: relative;
+
+  width: calc(var(--width) / 20);
+  height: 100%;
+
+  margin: 10px;
+
+  border-radius: calc(var(--width) / 20);
+
+  /* 加载图片之前显示 */
+  background-color: #ff7676;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  transition: flex var(--duration) ease-in;
+
+  cursor: pointer;
+}
+.expanding-cards .img.active {
+  flex: 9;
+}
+.expanding-cards .img h1 {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+
+  color: white;
+
+  opacity: 0;
+
+  transition: opacity var(--duration) ease;
+}
+.expanding-cards .img.img.active h1 {
+  opacity: 1;
+
+  transition: opacity var(--duration) ease-in var(--duration);
+}
