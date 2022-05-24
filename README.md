@@ -14,6 +14,7 @@
 - [转盘加载动画](./loading)
 - [弹性的伸缩栏](./elastic-nav)
 - [抽拉式的图片显示](./expanding-cards)
+- [步骤进度条](./progress-steps)
 
 # 代码仓库
 
