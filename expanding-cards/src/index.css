@@ -59,6 +59,8 @@ body {
   opacity: 0;
 
   transition: opacity var(--duration) ease;
+
+  pointer-events: none;
 }
 .expanding-cards .img.img.active h1 {
   opacity: 1;
