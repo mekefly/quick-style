@@ -1,0 +1,95 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+  width: 100vw;
+
+  font-family: Arial, Helvetica, sans-serif;
+  background: white;
+}
+
+.progress-steps {
+  --duration: 0.6s;
+  display: flex;
+  flex-direction: column;
+}
+.progress-steps .progress-container {
+  position: relative;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 500px;
+
+  z-index: 0;
+}
+
+.progress-steps .progress-container .progress,
+.progress-steps .progress-container .progress-back {
+  position: absolute;
+  height: 8px;
+  width: 100%;
+
+  z-index: -1;
+}
+.progress-steps .progress-container .progress {
+  background-color: #1e90ff;
+
+  transform: scale(0, 1);
+  transform-origin: 0px center;
+  transition: transform var(--duration) ease;
+}
+.progress-steps .progress-container .progress-back {
+  background-color: hsl(0, 0%, 50%);
+}
+
+.progress-steps .progress-container .step {
+  height: 30px;
+  width: 30px;
+
+  line-height: 30px;
+  text-align: center;
+
+  border-radius: 30px;
+  background-color: hsl(0, 0%, 100%);
+  border: 4px solid hsl(0, 0%, 50%);
+  color: hsl(0, 0%, 50%);
+
+  transition: border var(--duration) ease;
+}
+
+.progress-steps .progress-container .step.active {
+  border: 4px solid #1e90ff;
+}
+
+.progress-steps .control {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px;
+}
+.progress-steps .control .btn {
+  padding: 13px 20px;
+  outline: none;
+  border: none;
+
+  border-radius: 5px;
+
+  background-color: #1e90ff;
+  color: white;
+  font-size: 1.1rem;
+
+  transition: background-color var(--duration) ease;
+}
+.progress-steps .control .btn.disabled {
+  background-color: hsl(0, 0%, 50%);
+}
+.progress-steps .control .btn:active {
+  transform: scale(0.98);
+}
