@@ -12,7 +12,8 @@
 - [创意的列表效果](./item-block)
 - [中规中矩的名片效果](./business-card)
 - [转盘加载动画](./loading)
-- [弹性的伸缩栏](./elastic-nav/)
+- [弹性的伸缩栏](./elastic-nav)
+- [抽拉式的图片显示](./expanding-cards)
 
 # 代码仓库
 
