@@ -42,7 +42,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 
-  transition: flex var(--duration) ease-in;
+  transition: flex var(--duration) ease;
 
   cursor: pointer;
 }
@@ -65,5 +65,5 @@ body {
 .expanding-cards .img.img.active h1 {
   opacity: 1;
 
-  transition: opacity var(--duration) ease-in var(--duration);
+  transition: opacity var(--duration) ease var(--duration);
 }
