@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 对代码进行编译为浏览器可识别的代码，这里使用了jsx -->
+    <!-- https://www.babeljs.cn -->
+    <script src="https://unpkg.com/@babel/standalone@7.17.11/babel.min.js"></script>
+    <!-- vue框架，著名的前端框架 -->
+    <!-- https://v3.cn.vuejs.org/ -->
+    <script src="https://unpkg.com/vue@3.2.33/dist/vue.global.js"></script>
+    <!-- css in ts的一个解决方案 -->
+    <!-- https://wormery.github.io/wtsc/ -->
+    <script src="https://unpkg.com/@wormery/wtsc@2.0.0-bate.38/dist/wtsc.iife.js"></script>
+    <!-- <script src="https://unpkg.com/@wormery/wtsc@2.0.0-bate.38/dist/wtsc.iife.prod.js"></script> -->
+
+    <div id="app"></div>
+
+    <script type="text/babel">
+      const { createApp, h, ref, computed } = Vue;
+      const { defWTSC, rgb, px, PE, vh, vw, rem, ms } = wtsc;
+      // babel会将标签编译为React.createElement,所以我们打了个补丁
+      const React = { createElement: h };
+
+      const w = defWTSC({
+        defThemeKeys(p) {
+          return { c1: p(rgb(46, 213, 115)) };
+        },
+      });
+
+      const { c1 } = w.the;
+
+      const gw = w.global();
+      gw.add.margin(0).add.padding(0).selector("*").out();
+      gw.add
+        .display("flex")
+        .add.justifyContent("center")
+        .add.alignItems("center")
+
+        .add.height(vh(100))
+        .add.width(vw(100))
+        .add.backgroundImage(`linear-gradient(135deg,#81fbb8,#28c76f)`)
+        .selector("body")
+        .out();
+
+      const size = px(70);
+      const duration = ms(1200);
+
+      const ElasticNavItem = {
+        props: { label: String, link: String },
+        setup(props) {
+          const enter = ref(false);
+          return () => (
+            <div
+              onClick={(e) => e.stopPropagation()}
+              onMouseenter={() => {
+                enter.value = true;
+              }}
+              onMouseleave={() => {
+                enter.value = false;
+              }}
+              style={w.add
+                .display("flex")
+                .add.justifyContent("center")
+                .add.alignItems("center")
+                .add.flexShrink(0)
+                .add.width(size)
+                .add.height(size)
+                .out()}
+            >
+              <a
+                href={props.link}
+                style={w.add
+                  .color(rgb(0, 0, 0, 0.5))
+                  .if(enter.value, () => w.add.color(c1))
+                  .add.transition("color", ms(400), "ease")
+                  .add.textDecoration("none")
+                  .out()}
+              >
+                {props.label}
+              </a>
+            </div>
+          );
+        },
+      };
+      const cubicBezier = `cubic-bezier(0.68, -0.55, 0.265, 1.55)`;
+
+      const ElasticNav = {
+        props: { route: { type: Array, default: [] } },
+        setup(props) {
+          const length = computed(() => {
+            return props.route.length;
+          });
+
+          const isShow = ref(false);
+          const NavStyle = computed(() => {
+            w.add
+              .position("relative")
+              .add.display("flex")
+              .add.alignItems("center")
+
+              .add.height(size)
+              .add.backgroundColor(rgb(255, 255, 255))
+              .add.overflow("hidden")
+              .add.transition("all", duration, cubicBezier, ms(80))
+
+              .add.borderRadius(px(3))
+              .add.boxShadow(rgb(0, 0, 0, 0.24), px(3), px(3), px(8));
+            if (isShow.value) {
+              return w.add
+                .width(
+                  size.clone().setNum(size.num * (props.route.length + 0.5))
+                )
+                .add.padding(px(0), size.clone().setNum(size.num / 2))
+                .out();
+            } else {
+              return w.add.width(size).out();
+            }
+          });
+          const ItemStyle = computed(() => {
+            w.add.transition(
+              ["transform", duration, cubicBezier],
+              ["opacity", duration, cubicBezier]
+            );
+            if (!isShow.value) {
+              return w.add.transform(`scale(0,1)`).add.opacity(0).out();
+            }
+            return w.out();
+          });
+          const lineStyle = computed(() => {
+            w.add
+              .position("absolute")
+              .add.left("0px")
+
+              .add.width(rem(1.2))
+              .add.height(rem(0.2))
+              .add.backgroundColor(c1)
+              .add.borderRadius(rem(0.2))
+
+              .add.transition("transform", duration, cubicBezier);
+            return w.out();
+          });
+          const line1Style = computed(() => {
+            w.clear();
+            if (isShow.value) {
+              w.add.transform(
+                `translate(${size.num * (length.value + 0.5) + 20}px,0px)`,
+                `rotate(405deg)`
+              );
+              return w.out();
+            } else {
+              return w.add
+                .transform(`translate(calc(${size.num / 2}px - 0.6rem),-5px)`)
+                .out();
+            }
+          });
+          const line2Style = computed(() => {
+            w.clear();
+            if (isShow.value) {
+              w.add.transform(
+                `translate(${size.num * (length.value + 0.5) + 20}px,0px)`,
+                `rotate(-405deg)`
+              );
+              return w.out();
+            } else {
+              return w.add
+                .transform(`translate(calc(${size.num / 2}px - 0.6rem),5px)`)
+                .out();
+            }
+          });
+
+          return () => (
+            <div
+              onClick={() => (isShow.value = !isShow.value)}
+              style={NavStyle.value}
+            >
+              {props.route.map((item) => (
+                <ElasticNavItem
+                  style={ItemStyle.value}
+                  key={item.id}
+                  {...item}
+                ></ElasticNavItem>
+              ))}
+              <div style={[lineStyle.value, line1Style.value]}></div>
+              <div style={[lineStyle.value, line2Style.value]}></div>
+            </div>
+          );
+        },
+      };
+
+      const App = {
+        setup() {
+          const items = [
+            { id: Math.random(), label: "Home", link: "#" },
+            { id: Math.random(), label: "Works", link: "#" },
+            { id: Math.random(), label: "About", link: "#" },
+            { id: Math.random(), label: "Contact", link: "#" },
+          ];
+          return () => <ElasticNav route={items}></ElasticNav>;
+        },
+      };
+
+      createApp(App).mount("#app");
+    </script>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+    </style>
+  </body>
+</html>
