@@ -22,6 +22,7 @@
 - [页面整体旋转的 menu 效果](./rotating-navigation-animation)
 - [隐藏式索小部件](./hidden-search-widget)
 - [模糊加载效果](./blurry-loading)
+- [滑动进入列表动画](./scroll-animation)
 
 ## 代码仓库
 

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <h1>滑动以查看效果</h1>
+    <div class="container">
+      <div class="box">content</div>
+      <div class="box">content</div>
+      <div class="box">content</div>
+      <div class="box">content</div>
+      <div class="box">content</div>
+      <div class="box">content</div>
+      <div class="box">content</div>
+      <div class="box">content</div>
+      <div class="box">content</div>
+      <div class="box">content</div>
+      <div class="box">content</div>
+      <div class="box">content</div>
+      <div class="box">content</div>
+      <div class="box">content</div>
+      <div class="box">content</div>
+      <div class="box">content</div>
+      <div class="box">content</div>
+      <div class="box">content</div>
+      <div class="box">content</div>
+      <div class="box">content</div>
+      <div class="box">content</div>
+      <div class="box">content</div>
+      <div class="box">content</div>
+    </div>
+    <script>
+      const boxs = document.querySelectorAll(".box");
+      document.addEventListener("scroll", check);
+      check();
+      function check() {
+        boxs.forEach((box) => {
+          const windowHeight = window.innerHeight;
+          const rect = box.getBoundingClientRect();
+          const y = rect.y;
+          if (y > windowHeight - 100) {
+            box.classList.remove("show");
+          } else {
+            box.classList.add("show");
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

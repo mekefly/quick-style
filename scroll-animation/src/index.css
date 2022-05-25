@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  overflow-x: hidden;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 40px;
+}
+
+.container {
+  --duration: 0.5s;
+}
+
+.container .box {
+  height: 100px;
+  width: 130px;
+
+  margin: 12px;
+
+  border-radius: 5px;
+  background-color: #1e90ff;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+  transform: translateX(-100vw);
+
+  transition: transform var(--duration);
+}
+
+.container .box:nth-of-type(2n) {
+  transform: translateX(100vw);
+}
+
+.container .box.show {
+  transform: translateX(0vw);
+}
