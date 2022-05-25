@@ -1,0 +1,127 @@
+body {
+  margin: 0;
+  padding: 0;
+
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.rotating-navigation-animation {
+  --duration: 1s;
+
+  background-color: hsl(0, 0%, 20%);
+
+  overflow: hidden;
+}
+
+.rotating-navigation-animation .rotate.btn {
+  position: absolute;
+
+  height: 200px;
+  width: 200px;
+
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  border-radius: 100%;
+
+  background-color: #ff6b81;
+  font-size: 1.5rem;
+  color: white;
+
+  transition: transform var(--duration) ease;
+}
+
+.rotating-navigation-animation.rotated .rotate.btn {
+  transform: translate(-50%, -50%) rotate(-90deg);
+}
+
+.rotating-navigation-animation .rotate.btn .fa-solid {
+  position: absolute;
+}
+
+.rotating-navigation-animation .rotate.btn .fa-solid.fa-xmark {
+  bottom: 25%;
+  left: 25%;
+}
+
+.rotating-navigation-animation .rotate.btn .fa-solid.fa-bars {
+  right: 25%;
+  bottom: 25%;
+}
+
+.rotating-navigation-animation .menu {
+  position: absolute;
+  bottom: 0px;
+  left: -100vh;
+
+  font-size: 1.5rem;
+  color: white;
+}
+
+.rotating-navigation-animation .menu ul li {
+  margin: 30px 0px;
+
+  list-style: none;
+
+  transition: transform var(--duration) ease, color 0.3s ease;
+}
+
+.rotating-navigation-animation .menu ul li span {
+  margin-left: 10px;
+}
+
+.rotating-navigation-animation .menu ul li:hover {
+  color: aqua;
+}
+
+.rotating-navigation-animation.rotated .menu ul li:nth-child(1) {
+  transform: translateX(100vh);
+}
+
+.rotating-navigation-animation.rotated .menu ul li:nth-child(2) {
+  transform: translateX(calc(100vh + 20px));
+}
+
+.rotating-navigation-animation.rotated .menu ul li:nth-child(3) {
+  transform: translateX(calc(100vh + 40px));
+}
+
+.rotating-navigation-animation .container {
+  display: flex;
+  justify-content: center;
+
+  height: 100vh;
+  width: 100vw;
+
+  background-color: white;
+
+  transform-origin: 0px 0px;
+
+  transition: transform 1s ease;
+}
+
+.rotating-navigation-animation.rotated .container {
+  transform: rotate(-20deg);
+
+  overflow: hidden;
+}
+
+.rotating-navigation-animation .container .page {
+  height: 100%;
+  width: 1000px;
+
+  overflow: auto;
+}
+
+.rotating-navigation-animation .container .page h1 {
+  font-size: 1.5rem;
+}
+
+.rotating-navigation-animation .container .page .author {
+  margin-bottom: 18px;
+
+  color: hsl(0, 0%, 0%, 0.5);
+}
+
+.rotating-navigation-animation .container .page img {
+  width: 100%;
+}
