@@ -16,6 +16,7 @@
 - [抽拉式的图片显示](./expanding-cards)
 - [步骤进度条](./progress-steps)
 - [页面整体旋转的 menu 效果](./rotating-navigation-animation)
+- [隐藏式索小部件](./hidden-search-widget)
 
 # 代码仓库
 
