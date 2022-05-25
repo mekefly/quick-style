@@ -23,6 +23,7 @@
 - [隐藏式索小部件](./hidden-search-widget)
 - [模糊加载效果](./blurry-loading)
 - [滑动进入列表动画](./scroll-animation)
+- [选妹子还是选狗](./split-landing-page)
 
 ## 代码仓库
 
