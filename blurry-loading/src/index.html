@@ -51,6 +51,7 @@
           count = 0;
           pe++;
           container.style.filter = `blur(${(30 / 100) * (100 - pe)}px)`;
+          percentage.style.opacity = 0.01 * (100 - pe);
           percentage.innerHTML = `${pe}%`;
         }
         if (pe >= 100) {
