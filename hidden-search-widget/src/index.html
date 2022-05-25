@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../../icon-fa/all.css" />
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <div class="container hidden">
+      <input class="input" type="text" placeholder="Search" />
+      <button class="btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
+    <script>
+      const btn = document.querySelector(".btn");
+      btn.addEventListener("click", () => {
+        const container = document.querySelector(".container");
+        const isHidden = container.classList.contains("hidden");
+        if (isHidden) {
+          container.classList.remove("hidden");
+        } else {
+          container.classList.add("hidden");
+        }
+      });
+    </script>
+  </body>
+</html>

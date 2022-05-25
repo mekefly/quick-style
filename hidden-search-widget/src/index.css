@@ -1,0 +1,81 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+
+  background: linear-gradient(135deg, #42e695, #3bb2b8);
+}
+
+.container {
+  --duration: 1s;
+  --size: 40px;
+  --cubic-bezier: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: var(--size);
+  width: calc(var(--size) * 6);
+
+  border-radius: 3px;
+
+  background-color: white;
+
+  transition: width var(--duration) cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.container.hidden {
+  height: var(--size);
+  width: var(--size);
+}
+
+.container .btn {
+  display: block;
+
+  flex-grow: 0;
+
+  width: var(--size);
+  height: var(--size);
+
+  outline: none;
+  border: none;
+
+  background-color: transparent;
+}
+
+.container .input {
+  display: inline-block;
+
+  flex-grow: 1;
+
+  margin-left: 15px;
+
+  width: 0px;
+
+  border: none;
+  outline: none;
+
+  background-color: transparent;
+
+  transition: margin-left var(--duration) var(--cubic-bezier),
+    opacity var(--duration);
+}
+
+.container.hidden .input {
+  transition: margin-left var(--duration) var(--cubic-bezier) 100ms,
+    opacity var(--duration);
+  opacity: 0;
+  margin-left: 0px;
+}
+
+.container .btn:active {
+  transform: scale(0.98);
+}
