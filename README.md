@@ -1,5 +1,9 @@
 # 一些 css 效果
 
+## 请给个 star 吧球球你了
+
+## 一键三连球球你了
+
 ## 预览
 
 请在 gitpage 中浏览[本页](https://mekefly.github.io/quick-style)
@@ -17,7 +21,8 @@
 - [步骤进度条](./progress-steps)
 - [页面整体旋转的 menu 效果](./rotating-navigation-animation)
 - [隐藏式索小部件](./hidden-search-widget)
+- [模糊加载效果](./blurry-loading)
 
-# 代码仓库
+## 代码仓库
 
--[github](https://github.com/mekefly/quick-style)
+- [github](https://github.com/mekefly/quick-style)

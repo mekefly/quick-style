@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container"></div>
+    <span class="percentage">0%</span>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        height: 100vh;
+        width: 100vw;
+
+        font-family: Arial, Helvetica, sans-serif;
+        background-image: url(../../public/image/1-1338-753.png);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        filter: blur(20px);
+      }
+
+      .percentage {
+        position: absolute;
+
+        font-size: 2em;
+        color: white;
+        font-weight: 800;
+      }
+    </style>
+    <script>
+      const container = document.querySelector(".container");
+      const percentage = document.querySelector(".percentage");
+      let count = 0;
+      let pe = 0;
+      const intervaler = setInterval(() => {
+        count += 1;
+        if (count >= 1) {
+          count = 0;
+          pe++;
+          container.style.filter = `blur(${(30 / 100) * (100 - pe)}px)`;
+          percentage.innerHTML = `${pe}%`;
+        }
+        if (pe >= 100) {
+          clearInterval(intervaler);
+          container.style.filter = `blur(0px)`;
+        }
+      }, 16);
+    </script>
+  </body>
+</html>
