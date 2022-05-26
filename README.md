@@ -26,6 +26,7 @@
 - [选妹子还是选狗](./split-landing-page)
 - [文字逐个上漂的动画-50 项目 50 天第八天](./form-wave)
 - [声音](./sound-board)
+- [笑话](./dad-jokes)
 
 ## 代码仓库
 
