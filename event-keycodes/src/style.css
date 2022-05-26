@@ -1,0 +1,53 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+  width: 100vw;
+
+  --row: 40px;
+}
+
+.tip {
+  height: var(--row);
+
+  padding: 0 15px;
+
+  line-height: var(--row);
+  border: 1px solid black;
+  font-weight: bold;
+}
+
+.tip.noshow {
+  display: none;
+}
+
+.content.show {
+  display: flex;
+}
+
+.content {
+  display: none;
+}
+
+.content .box {
+  margin: 5px;
+}
+
+.content .box p {
+  margin: 5px;
+
+  color: #000000aa;
+  text-align: center;
+}
+
+.content .box div {
+  height: var(--row);
+  width: 100px;
+
+  border: 1px solid black;
+  text-align: center;
+  line-height: var(--row);
+  font-weight: bold;
+}
