@@ -1,0 +1,33 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+  width: 100vw;
+
+  background: linear-gradient(135deg, #f54ea2, #ff7676);
+}
+
+.btn {
+  height: 40px;
+  width: 100px;
+
+  margin: 15px;
+
+  border-radius: 4px;
+  outline: none;
+  border: none;
+  color: #fff;
+  background: #1e90ff;
+  font-family: Arial, Helvetica, sans-serif;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+  transition: all 50ms ease;
+}
+
+.btn:active {
+  transform: scale(0.98);
+
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 4px;
+}
