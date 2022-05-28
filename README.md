@@ -28,6 +28,7 @@
 18. [声音](./sound-board)
 19. [笑话](./dad-jokes)
 20. [按键显示效果](./event-keycodes)
+21. [问题-50 项目 50 天之第 12 天](./faq-collapse/)
 
 ## 代码仓库
 

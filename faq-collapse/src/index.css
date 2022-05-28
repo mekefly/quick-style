@@ -1,0 +1,78 @@
+body {
+  display: flex;
+  justify-content: center;
+  background-color: #dfe4ea;
+}
+.container {
+  --duration: 0.5s;
+}
+
+.container .item {
+  position: relative;
+  margin: 15px;
+  padding: 3px 15px;
+
+  background-color: transparent;
+  border: 1px solid;
+  border-radius: 8px;
+
+  overflow: hidden;
+}
+
+.container .item.active::after,
+.container .item.active::before {
+  opacity: 0.2;
+}
+.container .item::after,
+.container .item::before {
+  content: "\f075";
+  font-family: "Font Awesome 5 Free";
+  color: #2ecc71;
+  font-size: 6rem;
+  position: absolute;
+  opacity: 0;
+  top: -10px;
+  left: 20px;
+  transition: all var(--duration);
+}
+
+.container .item::after {
+  transform: rotateY(180deg);
+  color: #3498db;
+  top: -30px;
+  left: -19px;
+}
+
+.container .row {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.container .item .row .problem {
+  font-weight: bold;
+  margin: 0;
+}
+
+.container .item .row .btn {
+  transition: transform var(--duration);
+  padding: 0 10px;
+  /* flex-wrap: 0; */
+  height: inherit;
+  transform-origin: center 0.5rem;
+}
+
+.container .item.active .row .btn {
+  transform: rotate(180deg);
+}
+
+.container .item .answer {
+  transition: all var(--duration) ease;
+  max-height: 100px;
+}
+.container .item:not(.active) .answer {
+  max-height: 0px;
+  margin: 0px;
+  padding: 0px;
+  overflow: hidden;
+}
