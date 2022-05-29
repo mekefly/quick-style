@@ -29,6 +29,7 @@
 19. [笑话](./dad-jokes)
 20. [按键显示效果](./event-keycodes)
 21. [问题-50 项目 50 天之第 12 天](./faq-collapse/)
+22. [逗号分隔的标签显示实现](./random-choice-picker)
 
 ## 代码仓库
 

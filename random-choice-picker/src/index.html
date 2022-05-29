@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <!-- 对代码进行编译为浏览器可识别的代码，这里使用了jsx -->
+    <!-- https://www.babeljs.cn -->
+    <script src="https://unpkg.com/@babel/standalone@7.17.11/babel.min.js"></script>
+    <!-- vue框架，著名的前端框架 -->
+    <!-- https://v3.cn.vuejs.org/ -->
+    <script src="https://unpkg.com/vue@3.2.33/dist/vue.global.js"></script>
+
+    <div id="app"></div>
+
+    <script type="text/babel">
+      const { createApp, h, ref, computed } = Vue;
+      // babel会将标签编译为React.createElement,所以我们打了个补丁
+      const React = { createElement: h };
+
+      const Tag = {
+        props: {
+          tag: {
+            type: String,
+            default: "",
+          },
+        },
+        setup(props) {
+          return () => {
+            const tag = props.tag;
+            if (tag === "") {
+              return "";
+            }
+            return <div class="com-tag">{tag}</div>;
+          };
+        },
+      };
+      const Tags = {
+        props: { tags: { type: Array, default: () => [] } },
+        setup(props) {
+          return () => {
+            return (
+              <div class="com-tags">
+                {props.tags.map((tag, index) => (
+                  <Tag tag={tag} key={index} />
+                ))}
+              </div>
+            );
+          };
+        },
+      };
+
+      const App = {
+        setup() {
+          const value = ref("1,343,43,43,4,23,,43242,,,3434");
+          return () => (
+            <div class={"comtainer"}>
+              <h1>您可以输入内容来查看效果，您也可以使用`,`来分隔多个标签</h1>
+              <textarea
+                value={value.value}
+                onInput={(e) => (value.value = e.target.value)}
+              />
+              <Tags tags={value.value.split(",")} />
+            </div>
+          );
+        },
+      };
+
+      createApp(App).mount("#app");
+    </script>
+  </body>
+</html>

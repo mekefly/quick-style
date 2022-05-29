@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../../icon-fa/all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+      integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <!-- 对代码进行编译为浏览器可识别的代码，这里使用了jsx -->
+    <!-- https://www.babeljs.cn -->
+    <script src="https://unpkg.com/@babel/standalone@7.17.11/babel.min.js"></script>
+    <!-- vue框架，著名的前端框架 -->
+    <!-- https://v3.cn.vuejs.org/ -->
+    <script src="https://unpkg.com/vue@3.2.33/dist/vue.global.js"></script>
+    <!-- css in ts的一个解决方案 -->
+    <!-- https://wormery.github.io/wtsc/ -->
+    <script src="https://unpkg.com/@wormery/wtsc@2.0.0-bate.38/dist/wtsc.iife.js"></script>
+    <!-- <script src="https://unpkg.com/@wormery/wtsc@2.0.0-bate.38/dist/wtsc.iife.prod.js"></script> -->
+
+    <div id="app"></div>
+
+    <script type="text/babel">
+      const { createApp, h, ref, computed } = Vue;
+      const { defWTSC, rgb, px, PE, vh, vw } = wtsc;
+      // babel会将标签编译为React.createElement,所以我们打了个补丁
+      const React = { createElement: h };
+
+      const w = defWTSC({});
+
+      const Heart = {
+        setup() {
+          return () => <i class="fa-solid fa-heart"></i>;
+        },
+      };
+
+      const SendHeartBtn = {
+        setup() {
+          return () => <i class="fa-solid fa-gift"></i>;
+        },
+      };
+
+      const App = {
+        setup() {
+          return () => (
+            <div>
+              <Heart></Heart>
+              <SendHeartBtn></SendHeartBtn>
+            </div>
+          );
+        },
+      };
+
+      createApp(App).mount("#app");
+    </script>
+  </body>
+</html>
