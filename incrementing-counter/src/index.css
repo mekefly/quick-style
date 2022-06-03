@@ -1,0 +1,44 @@
+body {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+
+  background: linear-gradient(135deg, #f54ea2, #ff7676);
+  color: white;
+
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+.item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex-direction: column;
+
+  font-size: 1.5em;
+}
+.item i {
+  margin: 3rem;
+
+  font-size: 5em;
+  font-weight: bold;
+}
+.item h1 {
+  font-size: 3em;
+}
+
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+  }
+  .item i {
+    font-size: 3em;
+  }
+  .item h1 {
+    font-size: 2em;
+  }
+}

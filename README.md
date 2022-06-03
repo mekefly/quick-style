@@ -31,6 +31,7 @@
 21. [问题-50 项目 50 天之第 12 天](./faq-collapse)
 22. [逗号分隔的标签显示实现](./random-choice-picker)
 23. [弹性 NAV](./animated-navigation)
+24. [增长效果](./incrementing-counter)
 
 ## 代码仓库
 
