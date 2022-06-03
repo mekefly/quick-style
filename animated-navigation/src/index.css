@@ -1,0 +1,113 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+  width: 100vw;
+
+  background: linear-gradient(
+    to bottom,
+    #fff 0%,
+    #fff 50%,
+    #1e90ff 50%,
+    #1e90ff 100%
+  );
+}
+.container {
+  --num: 0;
+  --duration: 1s;
+  --size: 100px;
+  --transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  display: flex;
+
+  height: var(--size);
+  width: var(--size);
+
+  background: #fff;
+  border-radius: 3px;
+
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  overflow: hidden;
+
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+
+  transition: all var(--duration) var(--transition-timing-function) 60ms;
+}
+.container.active {
+  width: calc(var(--size) * calc(var(--num) + 1));
+}
+.container .content {
+  display: flex;
+  flex-wrap: nowrap;
+  opacity: 0;
+
+  height: 100%;
+  width: 0px;
+
+  transition: all var(--duration) var(--transition-timing-function);
+}
+.container.active .content {
+  opacity: 1;
+
+  width: calc(var(--size) * var(--num));
+}
+
+.container .content .item {
+  height: 100%;
+  width: var(--size);
+
+  flex-shrink: 0;
+
+  line-height: var(--size);
+  text-align: center;
+
+  font-size: 1.2rem;
+
+  transform: rotateY(450deg);
+
+  transition: all var(--duration) var(--transition-timing-function);
+}
+
+.container.active .content .item {
+  transform: rotateY(0deg);
+}
+
+.container .btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: var(--size);
+  width: var(--size);
+
+  z-index: 1;
+
+  outline: none;
+  border: none;
+
+  background-color: transparent;
+}
+
+.container .btn .line {
+  height: 0.3rem;
+  width: 1.5rem;
+
+  background-color: #1e90ff;
+
+  border-radius: 0.3rem;
+  transition: all var(--duration) var(--transition-timing-function);
+}
+.container .btn .line:nth-child(1) {
+  transform: translate(0.75rem, -0.5rem);
+}
+.container.active .btn .line:nth-child(1) {
+  transform: translate(0.75rem, 0rem) rotate(405deg);
+}
+.container .btn .line:nth-child(2) {
+  transform: translate(-0.75rem, 0.5rem);
+}
+.container.active .btn .line:nth-child(2) {
+  transform: translate(-0.75rem, 0rem) rotate(-405deg);
+}
