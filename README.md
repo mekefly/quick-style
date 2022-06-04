@@ -32,6 +32,7 @@
 22. [逗号分隔的标签显示实现](./random-choice-picker)
 23. [弹性 NAV](./animated-navigation)
 24. [增长效果](./incrementing-counter)
+25. [喝水](./drink-water)
 
 ## 代码仓库
 

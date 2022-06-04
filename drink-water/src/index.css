@@ -1,0 +1,110 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 100vh;
+  width: 100vw;
+
+  background: #1e90ff;
+}
+
+.container {
+  --size: 600px;
+  --color1: #70a1ff;
+  --color2: #30336b;
+  --duration: 0.4s;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  color: white;
+}
+.tip {
+  font-size: 1.5rem;
+}
+.container .cup.a-day {
+  --cup-size: calc(var(--size) * 1);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  overflow: hidden;
+}
+.container .cup.a-day .air {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  flex-grow: 1;
+
+  overflow: hidden;
+}
+.container .cup.a-day .air .l {
+  font-size: 2rem;
+}
+.container .cup.a-day .air p {
+  margin: 0;
+  padding: 0;
+}
+.container .cup.a-day .water {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex-shrink: 0;
+
+  height: 0%;
+  width: 100%;
+
+  color: white;
+  font-size: 2rem;
+  background-color: var(--color1);
+
+  overflow: hidden;
+
+  transition: all var(--duration) ease-in-out;
+}
+
+.container .cups {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.container .cups .row {
+  display: flex;
+}
+.cups {
+  --cup-size: calc(var(--size) * 0.3);
+}
+.cups .cup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin: calc(var(--cup-size) * 0.1) calc(var(--cup-size) * 0.1);
+
+  font-size: 1.3rem;
+
+  transition: color var(--duration) ease-in-out,
+    background-color var(--duration) ease-in-out;
+}
+.cups .cup.full {
+  color: white;
+  background-color: var(--color1);
+}
+.cup {
+  width: calc(var(--cup-size) * 0.6);
+  height: var(--cup-size);
+
+  background-color: white;
+  color: var(--color1);
+  outline: 8px solid var(--color2);
+  border-radius: 0 0 calc(var(--cup-size) * 0.1) calc(var(--cup-size) * 0.1);
+}
