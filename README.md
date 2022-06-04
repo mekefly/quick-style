@@ -33,6 +33,7 @@
 23. [弹性 NAV](./animated-navigation)
 24. [增长效果](./incrementing-counter)
 25. [喝水](./drink-water)
+26. [电影页面](./movie-app)
 
 ## 代码仓库
 
