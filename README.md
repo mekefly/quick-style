@@ -34,6 +34,7 @@
 24. [增长效果](./incrementing-counter)
 25. [喝水](./drink-water)
 26. [电影页面](./movie-app)
+27. [背景跟随改变的图片展示框](./background-slider)
 
 ## 代码仓库
 
