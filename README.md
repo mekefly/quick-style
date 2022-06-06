@@ -35,6 +35,7 @@
 25. [喝水](./drink-water)
 26. [电影页面](./movie-app)
 27. [背景跟随改变的图片展示框](./background-slider)
+28. [时钟](./time-clock)
 
 ## 代码仓库
 

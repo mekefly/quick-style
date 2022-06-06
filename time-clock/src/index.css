@@ -1,0 +1,185 @@
+.bright {
+  --color1: #fff;
+  --color2: #000;
+  --color3: red;
+}
+.dark {
+  --color1: #000;
+  --color2: #fff;
+  --color3: red;
+}
+* {
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  height: 100vh;
+  width: 100vw;
+
+  margin: 0;
+  padding: 0;
+
+  background-color: var(--color1);
+
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+.switch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 3rem;
+  width: 6rem;
+
+  border-radius: 5px;
+
+  background-color: var(--color2);
+  color: var(--color1);
+}
+.switch:active {
+  transform: scale(0.98);
+}
+.clock {
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 30rem;
+  width: 30rem;
+
+  margin: 5rem;
+
+  border-radius: 50%;
+  border: 0.5rem solid var(--color2);
+
+  overflow: hidden;
+}
+.clock .scale {
+  position: absolute;
+
+  height: 100%;
+  width: 100%;
+
+  /* border: 0.5rem solid var(--color2); */
+}
+.clock .scale div {
+  position: absolute;
+
+  display: flex;
+  justify-content: center;
+
+  height: 100%;
+  width: 100%;
+}
+.clock .scale div::after {
+  content: "";
+  position: absolute;
+
+  height: 100%;
+  width: 100%;
+
+  border-radius: 50%;
+  background-color: var(--color2);
+
+  transform: translateY(-50%);
+}
+.clock .scale .hour::after {
+  height: 1rem;
+  width: 1rem;
+}
+.clock .scale .minute::after {
+  height: 0.5rem;
+  width: 0.5rem;
+}
+.clock .pointer div {
+  position: absolute;
+
+  display: flex;
+  justify-content: center;
+
+  transition: transform 0.5s ease;
+}
+.clock .pointer div::after {
+  content: "";
+  position: absolute;
+
+  background-color: var(--color2);
+  transform: translateY(-100%);
+}
+.clock .pointer .hour::after {
+  height: calc(15rem * 0.618);
+  width: 1rem;
+  border-radius: 0.5rem;
+}
+.clock .pointer .minute::after {
+  height: calc(15rem * 0.8);
+  width: 0.618rem;
+  border-radius: 0.5rem;
+}
+.clock .pointer .second::after {
+  height: calc(15rem * 1.2);
+  width: 0.618rem;
+
+  border-radius: 0.5rem;
+  border-radius: 50% 50% 0 0;
+  background-color: var(--color3);
+
+  transform: translateY(-77%);
+}
+.clock .core {
+  position: absolute;
+
+  height: 1rem;
+  width: 1rem;
+
+  border-radius: 50%;
+
+  background-color: var(--color2);
+  border: 0.618rem solid var(--color3);
+}
+.date-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  font-size: 1.5rem;
+  color: var(--color2);
+}
+.date-text .time {
+  font-size: 5rem;
+}
+.date-text .date {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.date-text .date div {
+  margin: 5px;
+
+  opacity: 0.5;
+
+  transition: opacity 0.5s ease;
+}
+.date-text .date .day {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 2rem;
+  width: 2rem;
+
+  border-radius: 50%;
+
+  opacity: 1;
+
+  background-color: var(--color2);
+  color: var(--color1);
+}
