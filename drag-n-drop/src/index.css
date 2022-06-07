@@ -1,0 +1,43 @@
+* {
+  transition: all 0.5;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+  min-height: 100vh;
+  width: 100vw;
+
+  background-color: lightblue;
+}
+.container {
+  height: 10em;
+  width: 10em;
+
+  margin: 10px;
+
+  background-color: white;
+  border: 0.5em solid black;
+}
+.content {
+  height: 100%;
+  width: 100%;
+
+  background-image: url(../../public/image/1-1338-753.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.hold {
+  border: 0.5em solid #7f8c8d;
+}
+.hide {
+  display: none;
+}
+.hovered {
+  background-color: #fdcb6e;
+  border-style: dashed;
+  border-color: #7f8c8d;
+}

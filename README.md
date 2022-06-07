@@ -36,6 +36,8 @@
 26. [电影页面](./movie-app)
 27. [背景跟随改变的图片展示框](./background-slider)
 28. [时钟](./time-clock)
+29. [可连击的点击涟漪效果](./click-the-ripple-button)
+30. [速写拖拽效果](./drag-n-drop)
 
 ## 代码仓库
 
