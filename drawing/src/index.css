@@ -1,0 +1,59 @@
+body {
+  --color: #ff6b81;
+
+  display: flex;
+  flex-direction: column;
+
+  height: 100vh;
+  width: 100vw;
+
+  margin: 0;
+  padding: 0;
+}
+.top {
+  display: flex;
+  align-items: center;
+
+  height: 5rem;
+  width: 100%;
+
+  padding: 1rem;
+  box-sizing: border-box;
+
+  background-color: var(--color);
+}
+.top > * {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 3rem;
+  width: 3rem;
+  font-size: 2rem;
+  margin: 0.5rem;
+}
+.top button {
+  outline: none;
+  border: none;
+  border-radius: 50%;
+
+  color: var(--color);
+}
+.top button:active {
+  transform: scale(0.98);
+}
+.top .sub::after {
+  content: "I";
+  transform: rotate(90deg);
+}
+.top .size {
+  color: white;
+}
+.top .space {
+  flex-grow: 1;
+}
+canvas {
+  height: calc(100% - 7rem);
+  width: calc(100% - 2rem);
+  border: 1rem solid var(--color);
+}
