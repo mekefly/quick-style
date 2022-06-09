@@ -38,6 +38,7 @@
 28. [时钟](./time-clock)
 29. [可连击的点击涟漪效果](./click-the-ripple-button)
 30. [速写拖拽效果](./drag-n-drop)
+31. [画板](./drawing)
 
 ## 代码仓库
 
