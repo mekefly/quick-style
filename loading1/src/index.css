@@ -1,0 +1,48 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  background-color: #636e72;
+}
+.loading {
+  --size: 3rem;
+  --duration: 2s;
+
+  display: flex;
+
+  height: var(--size);
+  width: var(--size);
+}
+.loading::before,
+.loading::after {
+  content: "";
+  position: absolute;
+
+  border: calc(var(--size)) solid transparent;
+}
+.loading::before {
+  border-top: calc(var(--size)) solid white;
+  animation: loading var(--duration) linear infinite;
+}
+.loading::after {
+  border-left: calc(var(--size)) solid white;
+  animation: loading var(--duration) linear infinite calc(var(--duration) / 4);
+}
+@keyframes loading {
+  0%,
+  25% {
+    transform: rotate(0deg);
+  }
+  50%,
+  75% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
