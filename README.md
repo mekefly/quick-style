@@ -40,6 +40,7 @@
 30. [速写拖拽效果](./drag-n-drop)
 31. [画板](./drawing)
 32. [loading1](./loading1)
+33. [骨架屏](./content-placeholder)
 
 ## 代码仓库
 
