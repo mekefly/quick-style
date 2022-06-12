@@ -41,6 +41,7 @@
 31. [画板](./drawing)
 32. [loading1](./loading1)
 33. [骨架屏](./content-placeholder)
+34. [主页](./home-page)
 
 ## 代码仓库
 
