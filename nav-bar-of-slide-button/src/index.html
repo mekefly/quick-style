@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>顶部栏</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <div class="nav">
+        <div class="btns">
+          <div class="active" ref="activeBlock" :style="activeStyle"></div>
+          <div
+            v-for="(item , index) in btns"
+            class="btn"
+            @click="choice(item,index,$event)"
+          >
+            <span> {{ item.name }} </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: #2b3c4f;
+      }
+
+      .nav {
+        position: fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+
+        height: 40px;
+        width: 100vw;
+
+        background-color: #32485c;
+        color: aliceblue;
+        box-shadow: 0 2px 3px 0 #000000aa;
+      }
+
+      .nav .btns {
+        position: relative;
+        display: flex;
+        align-items: center;
+
+        height: 100%;
+      }
+
+      .nav .btns .active {
+        position: absolute;
+        left: 0px;
+
+        height: 100%;
+        width: 80px;
+
+        border-radius: 5px;
+        background-color: #18ba9a;
+
+        transition: all 0.6s;
+      }
+
+      .nav .btns .btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        height: 100%;
+        padding: 0px 20px;
+
+        border-radius: 5px;
+
+        transition: all 0.5s;
+      }
+
+      .nav .btns .btn:hover {
+        background-color: #e88b00;
+      }
+
+      .nav .btns .btn span {
+        display: block;
+        z-index: 999;
+      }
+    </style>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+      console.log(Vue);
+      Vue.createApp({
+        data() {
+          return {
+            activeBlock: null,
+            active: "首页",
+            activeStyle: { left: 0, height: 0, width: 0 },
+            btns: [
+              { name: "首页" },
+              { name: "博客" },
+              { name: "帮助" },
+              { name: "我的" },
+              { name: "关于" },
+              { name: "关于的的的的的" },
+            ],
+          };
+        },
+        mounted() {
+          console.log(3434);
+        },
+        methods: {
+          // 点击对应标签的事件
+          choice(item, index, e) {
+            this.active = item.name;
+            this.activeStyle.left = e.currentTarget.offsetLeft + "px";
+            this.activeStyle.height = e.currentTarget.offsetHeight + "px";
+            this.activeStyle.width = e.currentTarget.offsetWidth + "px";
+          },
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>
