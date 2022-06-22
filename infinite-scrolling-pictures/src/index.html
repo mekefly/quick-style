@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <div class="box">
+        <div
+          class="showBox"
+          v-for="item in showList"
+          @click="item.click"
+          :style="item.style"
+        >
+          <div class="img" :style="imageUrls(item.value)"></div>
+        </div>
+      </div>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+      //你修改长你要显示的图片的名字
+      //我上传单文件的话没办法上传图片
+      const prefix = "./imgs/";
+      const suffix = ".jpg";
+      //这里放图片名字，可以放任意多个图片名，用批量重命名什么的我用数字是方便让其他人看懂
+      const jpgnameList = [1, 2, 3, 4, 5, 6];
+      Vue.createApp({
+        setup() {
+          let _cardHeight = 123.6;
+          let _cardWidth = 200;
+          let showList = Vue.reactive([
+            { value: 1, style: { order: 0, opacity: 0 } },
+            { value: 2, style: { order: 1, opacity: 0.5 } },
+            { value: 3, style: { order: 2, opacity: 1 } },
+            { value: 4, style: { order: 3, opacity: 0.5 } },
+            { value: 5, style: { order: 4, opacity: 0 } },
+          ]);
+          /** 这个函数的作用是传入图片名称得到背景的style对象 */
+          const imageUrls = function (name) {
+            return {
+              backgroundImage: "url('" + prefix + name + suffix + "')",
+            };
+          };
+          /** 内容对象存储要显示的内容 */
+          let contentList = jpgnameList;
+          let startP = contentList.length - (2 % contentList.length);
+          let head = showList.length - 1;
+          let tail = 0;
+
+          /** 更新css属性 */
+          let updateProp = function (item) {
+            //这里还可以优化为不用修改的状态，现在暂时没时间改
+            if (item.style.order == 0 || item.style.order == 4) {
+              //修改透明度
+              item.style.opacity = 0;
+
+              //更新宽度高度
+              //这里设零是因为修改元素的显示顺序是没有动画的，
+              //通过把它设为零就可以避免某些动画的产生
+              item.style.height = "0px";
+              item.style.width = "0px";
+              //放大的区域
+              item.style.transform = "scale(0, 0) translateZ(0px)";
+              //修改高度防止遮盖主元素
+              item.style["z-index"] = 0;
+              // 单击事件修改
+              item.click = null;
+            } else if (item.style.order == 1 || item.style.order == 3) {
+              //修改透明度
+              item.style.opacity = 0.5;
+              // item.style.fontSize = "2em"
+              //更新宽度高度
+              item.style.height = _cardHeight + "px";
+              item.style.width = _cardWidth + "px";
+              //放大的区域
+              item.style.transform = "scale(1, 1) translateZ(100px)";
+              //修改高度防止遮盖主元素
+              item.style["z-index"] = 50;
+              // 单击事件修改
+              if (item.style.order == 1) {
+                item.click = left;
+              } else {
+                item.click = right;
+              }
+            } else if (item.style.order == 2) {
+              // 这里就是最中间的那个内容
+              //修改透明度
+              item.style.opacity = 1;
+              // item.style.fontSize = "4em"
+              //更新宽度高度
+              item.style.height = _cardHeight + "px";
+              item.style.width = _cardWidth + "px";
+              //放大的区域
+              item.style.transform = "scale(2.5, 2.5) translateZ(200px)";
+              //修改高度防止主元素被遮盖
+              item.style["z-index"] = 100;
+              // 单击事件修改
+              item.click = null;
+            }
+          };
+
+          /** 向左滚动*/
+          const left = function () {
+            for (let i = 0; i < showList.length; i++) {
+              const item = showList[i];
+              if (item.style.order >= showList.length - 1) {
+                item.style.order = 0;
+                // 更新内容
+                if (startP <= 0) {
+                  startP = contentList.length - 1;
+                } else {
+                  startP--;
+                }
+                item.value = contentList[startP];
+              } else {
+                item.style.order++;
+              }
+              //更新css和内容属性更新到显示盒子中
+              updateProp(item);
+            }
+          };
+          /** 向右滚动 */
+          const right = function () {
+            for (let i = 0; i < showList.length; i++) {
+              const item = showList[i];
+              if (item.style.order <= 0) {
+                item.style.order = showList.length - 1;
+                // 更新内容
+                if (startP >= contentList.length - 1) {
+                  startP = 0;
+                } else {
+                  startP++;
+                }
+                //这里要修改最右边的元素，并在列表里定位需要的元素的位置
+                //item.style.order就等于最右边元素的序号，但是加上开始位置后可能会超过
+                //内容区域，所以在此我们让它掉转显示开始的内容
+                let rightP = startP + item.style.order;
+
+                if (rightP >= contentList.length) {
+                  rightP = rightP - contentList.length;
+                }
+                item.value = contentList[rightP];
+              } else {
+                item.style.order--;
+              }
+
+              //更新css和内容属性更新到显示盒子中
+              updateProp(item);
+            }
+          };
+
+          // 初始化
+          const init = function () {
+            //初始化显示列表
+            for (let i = 0; i < showList.length; i++) {
+              const item = showList[i];
+              //更新css变量
+              updateProp(item);
+              //初始化显示列表内容
+              item.value = contentList[(startP + i) % contentList.length];
+            }
+          };
+          init();
+          return {
+            imageUrls,
+            left,
+            right,
+            showList,
+          };
+        },
+      }).mount("#app");
+    </script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        height: 100vh;
+
+        background-color: #6f847d;
+      }
+
+      .box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .box .showBox {
+        /* 使里面的元素居中显示 */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        border-radius: 8px;
+
+        overflow: hidden;
+        /* 调整卡片边缘的阴影 */
+        box-shadow: 0 1px 3px 0 #00000088;
+
+        transition: all 0.6s;
+      }
+
+      .box .showBox .img {
+        height: 100%;
+        width: 100%;
+        /* 调整图片显示方式，居中和不重复 */
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      .box span {
+        font-size: 2em;
+      }
+    </style>
+  </body>
+</html>
