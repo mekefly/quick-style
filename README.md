@@ -45,6 +45,7 @@
 35. [无限滚动图片](./infinite-scrolling-pictures)
 36. [滑动按钮的 NAV 栏](./nav-bar-of-slide-button)
 37. [交互式滑块动画](./interactive-slider)
+38. [message](./message)
 
 ## 代码仓库
 
