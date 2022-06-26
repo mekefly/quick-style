@@ -1,0 +1,82 @@
+body {
+  --color2: #a5b1c2;
+  --color1: #6f1e51;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+
+  background-color: #636e72;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+.search {
+  margin-bottom: 2rem;
+  width: 38rem;
+  padding: 2rem;
+  background-color: var(--color1);
+  outline: none;
+  border: none;
+  border-radius: 0.5rem;
+  color: #a5b1c2;
+  font-size: 1.3em;
+}
+.search:valid {
+  color: white;
+}
+.card {
+  display: flex;
+
+  width: 60rem;
+
+  padding: 2rem;
+  box-sizing: border-box;
+
+  background-color: var(--color1);
+  border-radius: 0.5rem;
+  opacity: 0;
+}
+.card .left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex-grow: 0;
+}
+.card .left .portrait {
+  height: 5rem;
+  width: 5rem;
+  margin: 1rem;
+  border: 0.5rem solid var(--color2);
+  border-radius: 50%;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.card .right {
+  flex-grow: 1;
+  color: white;
+}
+.card .info {
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 2rem;
+}
+.card .repos {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.card .repos .repo {
+  padding: 0.5rem;
+  margin: 0.3rem;
+  background-color: #ff4757;
+  border-radius: 0.5rem;
+}
