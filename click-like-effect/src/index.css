@@ -1,0 +1,42 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  height: 100vh;
+  width: 100vw;
+
+  margin: 0;
+  padding: 0;
+
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+.card {
+  height: 60rem;
+  width: 30rem;
+  background-image: url(../../public/image/photo-1507146426996-ef05306b995a.avif);
+  background-size: cover;
+  background-position: center;
+  border-radius: 1rem;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+.heart {
+  position: absolute;
+
+  color: red;
+  pointer-events: none;
+  opacity: 0;
+  animation: heartbeat 0.5s;
+}
+@keyframes heartbeat {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(5);
+  }
+}
