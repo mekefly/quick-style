@@ -1,0 +1,51 @@
+body {
+  --color: #00ffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  background-color: var(--color);
+
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+.typeing {
+  min-height: 1em;
+  font-size: 2em;
+  font-weight: bold;
+  border-right: 3px solid black;
+}
+.blink {
+  animation: blink 1s infinite;
+}
+@keyframes blink {
+  0%,
+  40% {
+    border-right: 3px solid black;
+  }
+  50%,
+  90% {
+    border-right: 3px solid transparent;
+  }
+  100% {
+    border-right: 3px solid black;
+  }
+}
+.spend {
+  position: absolute;
+  bottom: 1em;
+  background-color: #00000077;
+  padding: 0.5em;
+  font-weight: bold;
+}
+.spend .spend-input {
+  width: 2rem;
+
+  border: none;
+  outline: none;
+  background-color: var(--color);
+}

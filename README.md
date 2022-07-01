@@ -48,6 +48,7 @@
 38. [message](./message)
 39. [github-user-card](./github-user-card)
 40. [click-like-effect](./click-like-effect)
+41. [打字,输入效果](./typeing)
 
 ## 代码仓库
 
