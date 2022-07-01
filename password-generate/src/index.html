@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../../icon-fa/all.min.css" />
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h3 class="title">Password Generate</h3>
+      <div class="result-container">
+        <input type="text" class="result" readonly />
+        <button class="btn copy"><i class="fa-solid fa-copy"></i></button>
+      </div>
+      <div class="settings">
+        <div class="setting">
+          <label>Password Length</label>
+          <input type="number" class="length" min="1" max="99" value="18" />
+        </div>
+        <div class="setting">
+          <label>Inculed lowerease letters</label>
+          <input type="checkbox" name="low" class="include" checked="true" />
+        </div>
+        <div class="setting">
+          <label>Inculed upperease letters</label>
+          <input type="checkbox" name="upp" class="include" checked="true" />
+        </div>
+        <div class="setting">
+          <label>Inculed numbers</label>
+          <input type="checkbox" name="num" class="include" checked="true" />
+        </div>
+        <div class="setting">
+          <label>Inculed symbols</label>
+          <input type="checkbox" name="sym" class="include" checked="true" />
+        </div>
+      </div>
+      <button class="gen btn">Generate Password</button>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>

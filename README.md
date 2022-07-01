@@ -49,6 +49,7 @@
 39. [github-user-card](./github-user-card)
 40. [click-like-effect](./click-like-effect)
 41. [打字,输入效果](./typeing)
+42. [随机密码生成器](./password-generate)
 
 ## 代码仓库
 

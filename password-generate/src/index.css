@@ -1,0 +1,81 @@
+body {
+  --color1: #2ed573;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  background-color: var(--color1);
+}
+.container {
+  display: flex;
+  flex-direction: column;
+
+  width: 20rem;
+
+  padding: 1rem;
+
+  background-color: #00000077;
+  color: white;
+  border-radius: 0.1rem;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+.container .title {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.container .btn {
+  outline: none;
+  border: none;
+  background-color: var(--color1);
+  color: white;
+}
+.container .result-container {
+  display: flex;
+
+  background-color: #00000077;
+  padding: 0.5rem;
+}
+.container .result-container .result {
+  flex-grow: 1;
+
+  outline: none;
+  border: none;
+  background-color: transparent;
+  color: white;
+}
+.container .result-container .btn.copy {
+  height: 2rem;
+  width: 2rem;
+  color: white;
+}
+.container .settings {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
+}
+.container .settings .setting {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 2rem;
+}
+.container .settings .setting input {
+  width: 2rem;
+  outline: none;
+  background-color: var(--color1);
+  border: none;
+  border-radius: 0.1rem;
+}
+.container .btn.gen {
+  height: 2rem;
+  font-weight: bold;
+}
