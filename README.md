@@ -50,6 +50,7 @@
 40. [click-like-effect](./click-like-effect)
 41. [打字,输入效果](./typeing)
 42. [随机密码生成器](./password-generate)
+43. [复选框](./checkbox)
 
 ## 代码仓库
 
