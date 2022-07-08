@@ -1,0 +1,122 @@
+body {
+  --duration: 500ms;
+  --color1: #6c5ce7;
+  --size: 15rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  width: 100vw;
+
+  padding: 6rem 1rem 2rem 1rem;
+  box-sizing: border-box;
+  margin: 0;
+
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+.nav {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+
+  display: flex;
+  align-items: center;
+
+  height: 4rem;
+  width: 100vw;
+  padding: 1rem;
+  box-sizing: border-box;
+
+  background-color: var(--color1);
+
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+    rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+.btn {
+  color: white;
+  font-size: 1.5em;
+  transition: color var(--duration), transform 50ms;
+}
+.btn:hover {
+  color: #2ed573;
+}
+.btn:active {
+  transform: scale(0.97);
+}
+.container {
+  display: grid;
+  justify-content: space-around;
+  grid-template-columns: repeat(auto-fill, var(--size));
+
+  grid-gap: 2rem;
+  width: 100%;
+}
+.container .note {
+  display: flex;
+  flex-direction: column;
+
+  width: var(--size);
+  height: calc(var(--size) * 1.2);
+
+  background-color: white;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  border-radius: 0.3rem;
+
+  transition: height var(--duration);
+}
+@keyframes note-leave {
+  0% {
+    opacity: 1;
+    background-color: red;
+  }
+  100% {
+    opacity: 0;
+    background-color: red;
+  }
+}
+.note-enter {
+  animation: note-enter var(--duration);
+}
+@keyframes note-enter {
+  0% {
+    opacity: 0;
+    transform: translateY(-2rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0rem);
+  }
+}
+
+.container .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 4rem;
+  width: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+
+  background-color: var(--color1);
+}
+.container .header .delete.btn:hover {
+  color: red;
+}
+.container textarea {
+  flex-grow: 1;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  resize: none;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+@media screen and (max-width: 17rem) {
+  .container {
+    --size: calc(100vw - 2rem);
+  }
+}
