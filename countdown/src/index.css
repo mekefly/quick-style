@@ -1,0 +1,76 @@
+body {
+  --duration: 1s;
+  --timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+.container {
+  position: absolute;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  transition: var(--duration) var(--timing-function);
+  transition-property: transform, opacity;
+}
+.container.hide {
+  transform: scale(0);
+}
+.container .countdown {
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 3rem;
+  width: 10rem;
+
+  overflow: hidden;
+}
+.container .countdown .cd {
+  position: absolute;
+
+  font-size: 2rem;
+  font-weight: bold;
+  color: #2ed573;
+  transform-origin: center 200%;
+  transform: rotate(180deg);
+
+  transition: var(--duration) var(--timing-function);
+  transition-property: transform;
+}
+.container .countdown .cd.show {
+  transform: rotate(0deg);
+}
+.container .countdown .cd.hide {
+  transform: rotate(-180deg);
+}
+.go {
+  position: absolute;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  transform: scale(0);
+  opacity: 0;
+
+  transition: var(--duration) var(--timing-function);
+  transition-property: transform, opacity;
+}
+.go.show {
+  transform: scale(1);
+  opacity: 1;
+}
