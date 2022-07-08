@@ -51,6 +51,7 @@
 41. [打字,输入效果](./typeing)
 42. [随机密码生成器](./password-generate)
 43. [复选框](./checkbox)
+44. [note](./note)
 
 ## 代码仓库
 
