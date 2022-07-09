@@ -53,6 +53,7 @@
 43. [复选框](./checkbox)
 44. [note](./note)
 45. [倒数三二一](./countdown)
+46. [轮博图](./carouser)
 
 ## 代码仓库
 
