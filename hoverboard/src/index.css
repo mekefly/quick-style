@@ -1,0 +1,30 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  background: #111;
+}
+.container {
+  display: grid;
+  grid-template-columns: repeat(30, 1rem);
+  grid-template-rows: repeat(30, 1rem);
+  grid-gap: 0.2rem;
+}
+.square {
+  height: 100%;
+  width: 100%;
+
+  background-color: #2f2f2f;
+  box-shadow: 0 0 2px #000;
+  transition: all 2s;
+}
+.square:hover {
+  transition-duration: 0ms;
+  background-color: var(--color);
+  box-shadow: 0 0 2px var(--color), 0 0 10px var(--color);
+}
+/* 我发现根本不需要增加hover类 */

@@ -54,6 +54,7 @@
 44. [note](./note)
 45. [倒数三二一](./countdown)
 46. [轮博图](./carouser)
+47. [移动上去发光](./hoverboard)
 
 ## 代码仓库
 
