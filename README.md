@@ -1,9 +1,5 @@
 # 一些 css 效果
 
-## 请给个 star 吧球球你了
-
-## 一键三连球球你了
-
 ## 预览
 
 请在 gitpage 中浏览[本页](https://mekefly.github.io/quick-style)
