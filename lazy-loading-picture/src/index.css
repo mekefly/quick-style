@@ -1,0 +1,32 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  --size: 15rem;
+  --span: 1rem;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, var(--size));
+  grid-gap: var(--span);
+  width: 100%;
+  max-width: calc((var(--size) + var(--span)) * 4);
+}
+.container img {
+  height: var(--size);
+  width: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  background-color: #dddddd;
+}
+@media screen and (max-width: 16rem) {
+  .container {
+    --size: calc(100vw - 2rem);
+  }
+}
