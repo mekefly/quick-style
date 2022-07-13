@@ -52,6 +52,7 @@
 46. [轮博图](./carouser)
 47. [移动上去发光](./hoverboard)
 48. [图片懒加载和图片无限加载](./lazy-loading-picture)
+49. [用户评定反馈](./assess)
 
 ## 代码仓库
 

@@ -1,0 +1,88 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+.container {
+  width: 35rem;
+  padding: 2rem;
+  box-sizing: border-box;
+  border-radius: 0.5rem;
+
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+.container .feedback {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.container .feedback .feel {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  width: 100%;
+  margin: 2rem 0;
+}
+.container .feedback .feel .btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 8rem;
+  width: 8rem;
+
+  font-size: 4rem;
+  color: #ffc10e;
+  transition: box-shadow 1s;
+  border-radius: 0.3rem;
+}
+.container .feedback .feel .btn:hover,
+.container .feedback .feel .btn.active {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+.container .feedback .btn.send-review {
+  height: 3rem;
+  width: 10rem;
+
+  background-color: #333;
+  border-radius: 0.5rem;
+  outline: none;
+  border: none;
+  color: white;
+  font-weight: bold;
+}
+
+.container .feedback .btn.send-review:active {
+  transform: scale(0.98);
+}
+
+.container .feedback.hide {
+  display: none;
+}
+.container .thank {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.container .thank.hide {
+  display: none;
+}
+.container .thank .heart {
+  margin: 2rem 0;
+
+  font-size: 4rem;
+  color: red;
+}
+.container .thank p {
+  color: #777;
+}
