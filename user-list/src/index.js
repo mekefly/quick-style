@@ -45,4 +45,3 @@ searchInput.addEventListener("input", function () {
     });
   }
 });
-

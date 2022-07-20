@@ -6,20 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="../../public/icon-fa/css/all.css" />
   </head>
   <body>
-    <div class="container">
-      <div class="header">
-        <h1>Live User Filter</h1>
-        <input
-          type="text"
-          class="search"
-          placeholder="Search by Name or Location"
-        />
+    <div class="ranger" max="5">
+      <div class="line">
+        <div class="line-fill"></div>
+        <div class="ball">
+          <i class="fa-solid fa-location-pin location label">0</i>
+        </div>
       </div>
-      <ul class="body"></ul>
     </div>
-
     <script src="index.js"></script>
   </body>
 </html>

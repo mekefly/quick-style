@@ -1,0 +1,92 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+  width: 100vw;
+
+  margin: 0;
+  padding: 0;
+
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+.ranger {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 1.5rem;
+  width: 100%;
+  max-width: 30rem;
+
+  padding: 0.4rem 0.75rem;
+  box-sizing: border-box;
+}
+.ranger .line {
+  display: flex;
+  align-items: center;
+
+  height: 100%;
+  width: 100%;
+
+  background-color: #ced6e0;
+  border-radius: 1rem;
+}
+
+.ranger .line .line-fill {
+  height: 100%;
+  width: 0;
+  background-color: #18a058;
+  border-radius: 1rem;
+  transition: width 0.1s ease-out;
+}
+.ranger .line .ball {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 1.5rem;
+  width: 1.5rem;
+
+  border-radius: 50%;
+
+  box-shadow: 0 0 5px #000000aa, inset 0 0 1px #000000aa;
+  background-color: white;
+  transform: translateX(-50%);
+  transition: left 0.1s ease-out;
+}
+
+.ranger .line .ball .label {
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: white;
+  height: 3rem;
+  width: 3rem;
+
+  opacity: 0;
+  transform: translateY(-10%) scale(0);
+
+  transition: 0.2s;
+  transition-property: opacity, transform;
+  user-select: none;
+}
+.ranger .line .ball:hover .label,
+.ranger.mousedown .line .ball .label {
+  opacity: 1;
+  transform: translateY(-100%) scale(1);
+}
+.ranger .line .ball .label::before {
+  position: absolute;
+
+  z-index: -1;
+
+  font-size: 3rem;
+
+  color: #000000aa;
+  transform: translateY(10%);
+}
