@@ -19,9 +19,16 @@ rangerDoms.forEach((rangerDom) => {
     rangerDom.classList.remove("mousedown");
 
     //松开鼠标时吸附
+    refresh();
+  });
+
+  //这个是在调整窗口大小时自动更新状态
+  window.addEventListener("resize", refresh());
+
+  function refresh() {
     const value = rangerDom.value;
     render(value * getUnitSize(), value);
-  });
+  }
 
   //update
   document.addEventListener("mousemove", update);
