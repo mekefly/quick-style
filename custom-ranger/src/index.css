@@ -24,6 +24,8 @@ body {
   box-sizing: border-box;
 }
 .ranger .line {
+  position: relative;
+
   display: flex;
   align-items: center;
 
@@ -42,6 +44,8 @@ body {
   transition: width 0.1s ease-out;
 }
 .ranger .line .ball {
+  position: absolute;
+
   display: flex;
   justify-content: center;
   align-items: center;
