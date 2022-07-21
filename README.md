@@ -56,6 +56,7 @@
 50. [用户搜索过滤器](./user-list)
 51. [自定义滑动条](./custom-ranger)
 52. [鼠标滑动来进入不同的页面](./mobile-tab-nav)
+53. [根据进度自动切换内容](./automatic-switching)
 
 ## 代码仓库
 
