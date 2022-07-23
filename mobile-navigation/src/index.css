@@ -1,0 +1,164 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+  width: 100vw;
+
+  margin: 0;
+  padding: 0;
+
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font-size: 2em;
+}
+button.menu {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+}
+.navigation,
+.navigation::before,
+.navigation::after,
+.navigation ul {
+  transition-duration: var(--duration);
+  transition-property: transform, width, height;
+  transition-timing-function: var(--transition-timing-function);
+}
+.navigation {
+  --duration: 0.3s;
+  --transition-timing-function: ease-in;
+  --spend: 0.8;
+  --span: 10%;
+
+  position: fixed;
+  left: 0px;
+  top: 0px;
+
+  height: 100%;
+  width: 30rem;
+
+  transition-delay: calc(var(--duration) * 0);
+
+  transition-duration: 0s;
+}
+.navigation.hide {
+  transition-delay: calc(var(--duration) * 3);
+
+  transform: translateX(-100%);
+}
+.navigation::before {
+  content: "";
+
+  position: absolute;
+  top: 0;
+
+  display: block;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+
+  background-color: black;
+
+  transition-delay: calc(var(--duration) * 1 * var(--spend));
+}
+
+.navigation.hide::before {
+  transform: translateX(-100%);
+
+  transition-delay: calc(var(--duration) * 2 * var(--spend));
+}
+
+.navigation::after {
+  content: "";
+
+  position: absolute;
+  top: 0;
+
+  display: block;
+  width: calc(100% - var(--span));
+  height: 100%;
+  z-index: -1;
+
+  background-color: red;
+
+  transition-delay: calc(var(--duration) * 2 * var(--spend));
+}
+.navigation.hide:after {
+  transform: translateX(-100%);
+
+  transition-delay: calc(var(--duration) * 1 * var(--spend));
+}
+.navigation .logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 6rem;
+  width: 100%;
+  font-size: 3em;
+  font-weight: bold;
+}
+.navigation ul .close {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+}
+.navigation ul {
+  position: absolute;
+  top: 0;
+
+  height: 100%;
+
+  width: calc(100% - var(--span) * 2);
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+  border: 0;
+
+  background-color: white;
+
+  transition-delay: calc(var(--duration) * 3 * var(--spend));
+}
+.navigation.hide ul {
+  transform: translate(-100%);
+
+  transition-delay: calc(var(--duration) * 0 * var(--spend));
+}
+.navigation ul li {
+  margin: 2rem 0;
+
+  color: #000;
+}
+.navigation ul li a {
+  padding: 0 2rem;
+
+  text-decoration: none;
+  font-size: 2em;
+  color: #000;
+}
+.navigation ul li a:hover {
+  color: #18a058;
+}
+@media screen and (max-width: 30rem) {
+  .navigation {
+    width: 100%;
+    font-size: 0.8em;
+    --span: 8%;
+    transition: all 0.3s;
+  }
+}
+@media screen and (max-width: 20rem) {
+  .navigation {
+    width: 100%;
+    font-size: 0.5em;
+    --span: 5%;
+  }
+}

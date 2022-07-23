@@ -60,6 +60,7 @@
 54. [根据密码长度模糊背景，边缘红色闪烁](./password-strength-background)
 55. [验证您的用户](./verify-your-account)
 56. [分开与合并图片](./merge)
+57. [非常炫酷的移动端适配的导航栏](./mobile-navigation)
 
 ## 代码仓库
 
