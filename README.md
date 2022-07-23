@@ -58,6 +58,7 @@
 52. [鼠标滑动来进入不同的页面](./mobile-tab-nav)
 53. [根据进度自动切换内容](./automatic-switching)
 54. [根据密码长度模糊背景，边缘红色闪烁](./password-strength-background)
+55. [验证您的用户](./verify-your-account)
 
 ## 代码仓库
 
