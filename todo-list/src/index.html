@@ -23,7 +23,7 @@
     <div id="app"></div>
 
     <script type="text/babel">
-      const { createApp, h, ref, computed, defineComponent } = Vue;
+      const { createApp, h, ref, computed, defineComponent, watchEffect } = Vue;
       // babel会将标签编译为React.createElement,所以我们打了个补丁
       const React = { createElement: h };
       const { defWTSC, rgb, px, PE, vh, vw, ms } = wtsc;
@@ -163,8 +163,13 @@
       });
 
       const App = defineComponent(function () {
-        const noComponentedList = ref([{ value: "内容", key: Math.random() }]);
-        const componentedList = ref([{ value: "内容1", key: Math.random() }]);
+        const noComponentedList = useLocalStorage("noComponentedList", [
+          { value: "内容", key: Math.random() },
+        ]);
+        const componentedList = useLocalStorage("componentedList", [
+          { value: "内容1", key: Math.random() },
+        ]);
+
         function deleteList(list, key) {
           let index = -1;
           for (let i = 0; i <= list.length; i++) {
@@ -221,6 +226,24 @@
       });
 
       createApp(App).mount("#app");
+
+      function useLocalStorage(key, defaul) {
+        let v;
+        try {
+          v = JSON.parse(localStorage.getItem(key));
+        } catch (error) {
+          v = defaul;
+        }
+        if (v === null || v === undefined) {
+          v = defaul;
+        }
+        const r = ref(v);
+
+        watchEffect(() => {
+          localStorage.setItem(key, JSON.stringify(r.value));
+        });
+        return r;
+      }
     </script>
   </body>
 </html>

@@ -1,0 +1,71 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 100vh;
+  width: 100vw;
+
+  margin: 0;
+  padding: 0;
+
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  background-color: #f1f2f6;
+  overflow-x: hidden;
+}
+.container {
+  --size: 20em;
+  --color1: white;
+  --color2: #be2edd;
+  --row-height: 2rem;
+}
+.container h1 {
+  text-align: center;
+  font-size: 5em;
+  color: var(--color2);
+}
+
+.container .todo-list {
+  width: var(--size);
+
+  color: var(--color2);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.container small {
+  display: block;
+  margin: 2rem 0;
+
+  color: #aaa;
+  text-align: center;
+}
+.com-todo-input {
+  width: 100%;
+  height: var(--row-height);
+
+  padding: 0 0.5rem;
+
+  box-sizing: border-box;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--color2);
+}
+.com-todo-input:focus {
+  outline-color: var(--color2);
+}
+.com-item {
+  display: flex;
+  align-items: center;
+
+  height: var(--row-height);
+
+  margin-top: 1px;
+  padding: 0 0.5rem;
+
+  background-color: var(--color1);
+  transition: all 0.5s;
+}
+.com-item.completed {
+  color: #ddd;
+  text-decoration: line-through;
+}
